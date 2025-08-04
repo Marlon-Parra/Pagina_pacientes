@@ -1,0 +1,261 @@
+/* Estilos específicos para la página de derechos y deberes */
+
+.welcome-message {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.encabezado{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.encabezado img{
+    height: 160px;
+    width: auto;
+}
+
+.welcome-message h2 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.welcome-message p {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+.deberes-section, .derechos-section {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    position: relative;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 26px;
+    color: #2c3e50;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    border-radius: 2px;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    display: flex;
+    align-items: flex-start;
+    background: #ffffff;
+    border: 1px solid #e3e3e3;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #3498db, #2980b9);
+}
+
+.card-number {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+
+.card-content {
+    flex: 1;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #2c3e50;
+    padding-top: 5px;
+}
+
+/* Diferenciación visual entre secciones */
+.deberes-section .card-number {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+}
+
+.deberes-section .card::before {
+    background: linear-gradient(180deg, #e74c3c, #c0392b);
+}
+
+.derechos-section .card-number {
+    background: linear-gradient(135deg, #27ae60, #219a52);
+    box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);
+}
+
+.derechos-section .card::before {
+    background: linear-gradient(180deg, #27ae60, #219a52);
+}
+
+.actions-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.actions-container button {
+    width: auto;
+    min-width: 200px;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-quiz {
+    background-color: #2c3e50; /* azul oscuro profesional */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-quiz:hover {
+    background-color: #34495e; /* azul más claro al pasar */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-back {
+    background-color: #b9c9d3; /* gris claro */
+    color: #2c3e50;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-back:hover {
+    background-color: #eaf1f1; /* gris más oscuro al pasar */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .welcome-message {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .welcome-message h2 {
+        font-size: 24px;
+    }
+
+    .welcome-message p {
+        font-size: 14px;
+    }
+
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .card-number {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+        margin-right: 12px;
+    }
+
+    .card-content {
+        font-size: 14px;
+    }
+
+    .actions-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .actions-container button {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .welcome-message {
+        padding: 15px;
+    }
+
+    .card {
+        padding: 12px;
+    }
+
+    .card-number {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+        margin-right: 10px;
+    }
+
+    .card-content {
+        font-size: 13px;
+        padding-top: 2px;
+    }
+}

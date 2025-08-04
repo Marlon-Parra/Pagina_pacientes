@@ -1,0 +1,338 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos base del body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container principal - Envuelve todo el contenido */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header y logo - Dentro del contenedor */
+.encabezado {
+    background: linear-gradient(175deg, #3498db 50%, #2c3e50 100%);
+    padding: 25px 20px;
+    text-align: center;
+    position: relative;
+    margin: 0;
+}
+
+.encabezado::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #27ae60, #3498db, #9b59b6);
+}
+
+.encabezado img {
+    width: 260px;
+    height: auto;
+    max-width: 85%;
+}
+
+/* Títulos - Dentro del contenedor */
+h1, h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin: 0;
+    padding: 25px 20px 15px 20px;
+    font-size: 24px;
+    font-weight: 300;
+    position: relative;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+h2 {
+    padding-bottom: 10px;
+}
+
+h1::after, h2::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #27ae60);
+    border-radius: 2px;
+}
+
+/* Formularios - Sin fondo propio, usa el del contenedor */
+form {
+    max-width: none;
+    margin: 0;
+    background-color: transparent;
+    padding: 0 40px 30px 40px;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Inputs y selects */
+input, select {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 2px solid #e0e6ed;
+    background: #f8f9fa;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #3498db;
+    background: #fff;
+}
+
+input:valid {
+    border-color: #27ae60;
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6,9 12,15 18,9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 20px;
+}
+
+/* Botones principales */
+button {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #2980b9 0%, #21618c 100%);
+}
+
+/* Botón específico para doctora */
+.btn-doctor {
+    background: linear-gradient(135deg, #27ae60 0%, #219150 100%);
+    max-width: 300px;
+    margin: 30px auto;
+}
+
+.btn-doctor:hover {
+    background: linear-gradient(135deg, #219150 0%, #1e8449 100%);
+}
+
+/* Botón para quiz */
+.btn-quiz {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+.btn-quiz:hover {
+    background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+}
+
+/* Botones de navegación */
+.btn-back {
+    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+    margin-top: 10px;
+}
+
+.btn-back:hover {
+    background: linear-gradient(135deg, #7f8c8d 0%, #708090 100%);
+}
+
+/* Mensajes */
+#mensaje {
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 40px;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.mensaje-exito {
+    color: #27ae60;
+    background: #d5f4e6;
+    border: 2px solid #27ae60;
+}
+
+.mensaje-error {
+    color: #e74c3c;
+    background: #fdf2f2;
+    border: 2px solid #e74c3c;
+}
+
+/* Cards para derechos y deberes */
+.card {
+    border: 2px solid #e0e6ed;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    background: #f8f9fa;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover {
+    border-color: #3498db;
+}
+
+.section-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    text-align: center;
+    font-size: 24px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #27ae60);
+    border-radius: 2px;
+}
+
+/* Container principal alternativo */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .form-container {
+        margin: 0;
+        border-radius: 15px;
+    }
+
+    form {
+        padding: 0 20px 25px 20px;
+    }
+
+    .encabezado {
+        padding: 20px 15px;
+    }
+
+    .encabezado img {
+        width: 200px;
+        max-width: 80%;
+    }
+
+    h1, h2 {
+        font-size: 20px;
+        padding: 20px 15px 10px 15px;
+    }
+
+    input, select {
+        padding: 12px 15px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 14px;
+        font-size: 15px;
+    }
+
+    .card {
+        margin: 0 10px 15px 10px;
+        padding: 15px;
+    }
+
+    #mensaje {
+        margin: 20px 20px;
+    }
+}
+
+/* Mejoras adicionales para elementos específicos */
+br {
+    display: none; /* Elimina los <br> ya que ahora usamos margin-bottom */
+}
+
+/* Estilos para cuando no hay container wrapper */
+body > form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+body > .encabezado {
+    background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+    padding: 30px 0;
+    text-align: center;
+    position: relative;
+    margin-bottom: 0;
+    border-radius: 20px 20px 0 0;
+}
+
+body > .encabezado + h2 {
+    background: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    padding: 30px 0 10px 0;
+}
+
+body > .encabezado + h2 + form {
+    border-radius: 0 0 20px 20px;
+    margin-top: 0;
+}

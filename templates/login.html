@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Doctora - Clínica Medical Duarte</title>
+    <link rel="stylesheet" href="./static/css/login.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="logo-container">
+            <img src="https://clinicamedicalduarte.com/wp-content/uploads/2022/12/imagotipo_cmd@4x.png"
+                alt="Logo Clínica Medical Duarte">
+        </div>
+
+        <h2>👩‍⚕️ Acceso Doctora</h2>
+
+        <div id="errorMessage" class="error-message"></div>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <input type="text" id="usuario" placeholder=" " required>
+                <label for="usuario">Usuario</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="contrasena" placeholder=" " required>
+                <label for="contrasena">Contraseña</label>
+            </div>
+
+            <button type="submit" class="btn-login">
+                <span id="loginText">Ingresar</span>
+                <div id="loading" class="loading">
+                    <div class="loading-spinner"></div>
+                    Verificando...
+                </div>
+            </button>
+        </form>
+
+        <button class="btn-back" onclick="location.href='../index.html'">
+            ← Regresar al Registro
+        </button>
+
+        <div class="credentials-hint">
+            <strong>Credenciales de prueba:</strong>
+            Usuario: <code>doctora</code><br>
+            Contraseña: <code>1234</code>
+        </div>
+    </div>
+
+    <script src="./static/js/login.js"></script>
+</body>
+
+</html>

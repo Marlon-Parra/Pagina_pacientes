@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Pacientes - Clínica Medical Duarte</title>
+    <link rel="stylesheet" href="./templates/static/css/style.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <header class="encabezado">
+            <img src="https://clinicamedicalduarte.com/wp-content/uploads/2022/12/imagotipo_cmd@4x.png"
+                alt="Logo Clínica Medical Duarte">
+        </header>
+
+        <h2>Formulario de Registro</h2>
+
+        <form id="formRegistro">
+            <label>Nombre completo:<br>
+                <input type="text" name="nombre" id="nombre" pattern="^[A-Za-zÁÉÍÓÚÑáéíóúñ ]{3,60}$"
+                    title="Ingresa solo letras, mínimo 3 caracteres" required>
+            </label><br><br>
+
+            <label>Tipo de documento:<br>
+                <select name="tipo_documento" id="tipoDocumento" required>
+                    <option value="">Seleccione...</option>
+                    <option value="CC">Cédula de Ciudadanía</option>
+                    <option value="TI">Tarjeta de Identidad</option>
+                    <option value="CE">Cédula de Extranjería</option>
+                </select>
+            </label><br><br>
+
+            <label>Número de documento:<br>
+                <input type="text" name="documento" id="numeroDocumento" pattern="^\d{10}$" maxlength="10"
+                    title="Debe tener exactamente 10 dígitos" required>
+            </label><br><br>
+
+            <label>Habitación:<br>
+                <input type="text" name="habitacion" id="sala" pattern="^[A-Za-z0-9\- ]{1,10}$"
+                    title="Ejemplo: 402A, H-203" required>
+            </label><br><br>
+
+            <label>Servicio:<br>
+                <input type="text" name="servicio" id="servicio" pattern="^[A-Za-zÁÉÍÓÚÑáéíóúñ ]{3,30}$"
+                    title="Ejemplo: Medicina interna" required>
+            </label><br><br>
+
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+
+    <button class="btn-doctor" onclick="location.href='templates/login.html'">Acceso Doctora</button>
+
+    <p id="mensaje"></p>
+
+    <script src="./templates/static/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo - Clínica Medical Duarte</title>
+    <!-- <link rel="stylesheet" href="./css/styles.css"> -->
+    <link rel="stylesheet" href="./static/css/admin.css">
+</head>
+
+<body>
+    <header class="admin-header">
+        <div class="header-content">
+            <img src="https://clinicamedicalduarte.com/wp-content/uploads/2022/12/imagotipo_cmd@4x.png"
+                alt="Logo Clínica Medical Duarte" class="header-logo">
+            <div class="admin-info">
+                <h1>Panel Administrativo</h1>
+                <p>Gestión de Pacientes Registrados</p>
+            </div>
+            <div class="user-info">
+                <span class="user-welcome">👩‍⚕️ Dra. Medical</span>
+                <button class="btn-logout" onclick="adminManager.cerrarSesion()">
+                    Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        <div class="container">
+            <!-- Estadísticas -->
+            <section class="stats-section">
+                <h2>📊 Estadísticas</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="totalPacientes">0</span>
+                            <span class="stat-label">Total Pacientes</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="pacientesHoy">0</span>
+                            <span class="stat-label">Registros Hoy</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏥</div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="serviciosActivos">0</span>
+                            <span class="stat-label">Servicios Activos</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🛏️</div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="habitacionesOcupadas">0</span>
+                            <span class="stat-label">Habitaciones Ocupadas</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Controles -->
+            <section class="controls-section">
+                <div class="controls-header">
+                    <h2>🔍 Buscar y Filtrar</h2>
+                    <div class="actions-group">
+                        <button class="btn-primary" onclick="adminManager.exportarCSV()">
+                            📥 Exportar CSV
+                        </button>
+                        <button class="btn-secondary" onclick="adminManager.actualizarDatos()">
+                            🔄 Actualizar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="filters-container">
+                    <input type="text" id="buscador" placeholder="🔍 Buscar por nombre o documento..."
+                        oninput="adminManager.filtrarPacientes()">
+
+                    <select id="filtroServicio" onchange="adminManager.filtrarPacientes()">
+                        <option value="">Todos los servicios</option>
+                    </select>
+
+                    <select id="filtroTipoDocumento" onchange="adminManager.filtrarPacientes()">
+                        <option value="">Todos los documentos</option>
+                        <option value="CC">Cédula de Ciudadanía</option>
+                        <option value="TI">Tarjeta de Identidad</option>
+                        <option value="CE">Cédula de Extranjería</option>
+                    </select>
+
+                    <button class="btn-clear" onclick="adminManager.limpiarFiltros()">
+                        🗑️ Limpiar Filtros
+                    </button>
+                </div>
+            </section>
+
+            <!-- Tabla de pacientes -->
+            <section class="table-section">
+                <div class="table-header">
+                    <h2>📋 Lista de Pacientes</h2>
+                    <div class="table-info">
+                        <span id="registrosMostrados">0</span> de <span id="totalRegistros">0</span> registros
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="patients-table" id="tablaPacientes">
+                        <thead>
+                            <tr>
+                                <th onclick="adminManager.ordenarTabla('nombre')" class="sortable">
+                                    Nombre Completo <span class="sort-indicator">↕️</span>
+                                </th>
+                                <th onclick="adminManager.ordenarTabla('tipoDocumento')" class="sortable">
+                                    Tipo Doc. <span class="sort-indicator">↕️</span>
+                                </th>
+                                <th onclick="adminManager.ordenarTabla('numeroDocumento')" class="sortable">
+                                    Número Documento <span class="sort-indicator">↕️</span>
+                                </th>
+                                <th onclick="adminManager.ordenarTabla('sala')" class="sortable">
+                                    Habitación <span class="sort-indicator">↕️</span>
+                                </th>
+                                <th onclick="adminManager.ordenarTabla('servicio')" class="sortable">
+                                    Servicio <span class="sort-indicator">↕️</span>
+                                </th>
+                                <th onclick="adminManager.ordenarTabla('fechaRegistro')" class="sortable">
+                                    Fecha Registro <span class="sort-indicator">↕️</span>
+                                </th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaPacientesBody">
+                            <!-- Los datos se cargan dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-footer">
+                    <div class="pagination" id="pagination">
+                        <!-- La paginación se genera dinámicamente -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal de confirmación -->
+    <div id="modalConfirmacion" class="modal">
+        <div class="modal-content">
+            <h3>⚠️ Confirmar Acción</h3>
+            <p id="modalMensaje"></p>
+            <div class="modal-actions">
+                <button class="btn-danger" id="btnConfirmar">Confirmar</button>
+                <button class="btn-secondary" onclick="adminManager.cerrarModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de detalles del paciente -->
+    <div id="modalDetalles" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>👤 Detalles del Paciente</h3>
+                <button class="modal-close" onclick="adminManager.cerrarModalDetalles()">×</button>
+            </div>
+            <div class="modal-body" id="detallesPaciente">
+                <!-- Los detalles se cargan dinámicamente -->
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="adminManager.cerrarModalDetalles()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de cerrar sesión -->
+    <div id="modalCerrarSesion" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🚪 Cerrar Sesión</h3>
+                <button class="modal-close" onclick="adminManager.cerrarModalSesion()">×</button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align: center; margin: 20px 0; font-size: 16px;">
+                    ¿Está seguro de que desea cerrar sesión?
+                </p>
+                <p style="text-align: center; color: #6c757d; font-size: 14px; margin: 10px 0;">
+                    Se perderán todos los datos no guardados y será redirigido al login.
+                </p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-danger" onclick="adminManager.confirmarCerrarSesion()">
+                    🚪 Cerrar Sesión
+                </button>
+                <button class="btn-secondary" onclick="adminManager.cerrarModalSesion()">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./static/js/admin.js"></script>
+</body>
+
+</html>

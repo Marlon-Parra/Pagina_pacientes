@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Juego de Conocimientos - Clínica Medical Duarte</title>
+    <link rel="stylesheet" href="./static/css/quiz.css">
+</head>
+
+<body>
+    <header class="encabezado">
+        <img src="https://clinicamedicalduarte.com/wp-content/uploads/2022/12/imagotipo_cmd@4x.png"
+            alt="Logo Clínica Medical Duarte">
+    </header>
+
+    <div class="container">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2>🧠 Mini quiz de Conocimientos</h2>
+                <p>Pon a prueba tus conocimientos sobre derechos y deberes de los pacientes</p>
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+
+            <div class="quiz-content">
+                <!-- Pantalla de inicio -->
+                <div id="startScreen" class="start-screen">
+                    <div style="text-align: center; padding: 40px 0;">
+                        <h3 style="color: #2c3e50; margin-bottom: 20px;">¿Listo para comenzar?</h3>
+                        <p style="color: #7f8c8d; margin-bottom: 30px; line-height: 1.6;">
+                            Responderás preguntas sobre los derechos y deberes que acabas de leer.
+                            <br>¡Veamos qué tanto has aprendido!
+                        </p>
+                        <button class="btn-next" onclick="quiz.startQuiz()">
+                            🚀 Comenzar Quiz
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pantalla del quiz -->
+                <div id="quizScreen" style="display: none;">
+                    <div class="question-container">
+                        <div class="question-number" id="questionNumber"></div>
+                        <div class="question-text" id="questionText"></div>
+                    </div>
+
+                    <div class="options-container" id="optionsContainer">
+                        <!-- Las opciones se generan dinámicamente -->
+                    </div>
+
+                    <div class="quiz-actions">
+                        <div class="score-display">
+                            <div class="score-circle" id="scoreCircle">0/0</div>
+                            <span>Respuestas correctas</span>
+                        </div>
+                        <button class="btn-next" id="nextButton" onclick="quiz.nextQuestion()" disabled>
+                            Siguiente
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pantalla de resultados -->
+                <div id="resultScreen" style="display: none;">
+                    <div class="result-container">
+                        <div class="result-score" id="finalScore"></div>
+                        <div class="result-message" id="resultMessage"></div>
+
+                        <div class="result-details">
+                            <div class="result-stat">
+                                <span class="result-stat-label">Preguntas respondidas:</span>
+                                <span class="result-stat-value" id="totalQuestions"></span>
+                            </div>
+                            <div class="result-stat">
+                                <span class="result-stat-label">Respuestas correctas:</span>
+                                <span class="result-stat-value" id="correctAnswers"></span>
+                            </div>
+                            <div class="result-stat">
+                                <span class="result-stat-label">Respuestas incorrectas:</span>
+                                <span class="result-stat-value" id="incorrectAnswers"></span>
+                            </div>
+                            <div class="result-stat">
+                                <span class="result-stat-label">Porcentaje de acierto:</span>
+                                <span class="result-stat-value" id="percentage"></span>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <button class="btn-next" onclick="quiz.restartQuiz()">
+                                🔄 Jugar de Nuevo
+                            </button>
+                            <button class="btn-back" onclick="location.href='derechos-deberes.html'">
+                                ← Volver a Derechos y Deberes
+                            </button>
+                            <button class="btn-back" onclick="location.href='index.html'" style="background: #3498db;">
+                                🏠 Ir al Inicio
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./static/js/quiz.js"></script>
+</body>
+
+</html>
